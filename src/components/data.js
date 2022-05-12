@@ -62,7 +62,7 @@ export const TECHNIQUES = [
         "name": "techniques2",
         "options": [
           {
-            "title": "Executioner",
+            "title": "Deep Strikes",
             "value": "executioner"
           },
           {

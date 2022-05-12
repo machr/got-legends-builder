@@ -3,36 +3,42 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import { TECHNIQUES } from './data'
 
+const characters = ['samurai', 'hunter', 'ronin', 'assassin'];
+
 const Aside = () => {
   const [selectedCharacter, setSelectedCharacter] = useState('hunter');
 
   const handleClick = (event) => {
-    // event.preventDefault()
+    event.preventDefault();
     const { value } = event.currentTarget;
     setSelectedCharacter(value)
   }
 
-  const listCharacters = TECHNIQUES.map((character, index) =>
-    <button type='button' onClick={handleClick} value={character.name} key={index}>{character.name}</button>
+
+  const listCharacters = characters.map((character, index) =>
+    <button type='button' onClick={handleClick} value={character} key={index}>{character}</button>
   )
 
-  const characterTechniques = TECHNIQUES.map((character, index) =>
-    <li key={index}>{character.techniques[0].options[0].title}</li>
-  )
+  const findCharacterTechniques = TECHNIQUES.filter((character) => {
+    return character.name === selectedCharacter
+  })
 
-
+  console.log(findCharacterTechniques);
 
   return (
     <aside>
       <AsideHeader>
-        Hello: Current character is: {character}
+        Hello: Current character is: {selectedCharacter}
       </AsideHeader>
       <AsideBody>
         <CharacterList>
           {listCharacters}
         </CharacterList>
         <ul>
-          {characterTechniques}
+          {findCharacterTechniques[0].techniques[0].options[0].title}
+        </ul>
+        <ul>
+          {findCharacterTechniques[0].techniques[1].options[0].title}
         </ul>
       </AsideBody>
 
