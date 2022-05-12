@@ -55,3 +55,14 @@ h6 {
 
 
 /*  begin global styles here! */
+
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  height: 100vh
+}
+
+main {
+  background-color: #3a1418;
+}
